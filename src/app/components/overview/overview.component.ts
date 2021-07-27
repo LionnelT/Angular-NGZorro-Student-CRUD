@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
 import { Student } from 'src/app/Student';
+import { StudentsService } from 'src/app/services/students.service';
 
 @Component({
   selector: 'app-overview',
@@ -9,32 +10,13 @@ import { Student } from 'src/app/Student';
 })
 export class OverviewComponent implements OnInit {
 
-  isVisible = false;
-  isOkLoading = false;
+  StudentsData !: any
 
   isVisible2 = false;
   isOkLoading2 = false;
 
   changePassword(): void {
     this.isVisible2 = true;
-  }
-
-  confirmModal?: NzModalRef;
-
-  showModal(): void {
-    this.isVisible = true;
-  }
-
-  handleOk(): void {
-    this.isOkLoading = true;
-    setTimeout(() => {
-      this.isVisible = false;
-      this.isOkLoading = false;
-    }, 500);
-  }
-
-  handleCancel(): void {
-    this.isVisible = false;
   }
 
   handleOk2(): void {
@@ -49,61 +31,18 @@ export class OverviewComponent implements OnInit {
     this.isVisible2 = false;
   }
 
-  showDeleteConfirm(): void {
-    this.confirmModal = this.modal.confirm({
-      nzTitle: 'Do you Want to delete this record?',
-      nzContent: 'A deleted record cannot be recovered',
-      nzOnOk: () =>
-        new Promise((resolve, reject) => {
-          setTimeout(Math.random() > 0.5 ? resolve : reject, 1000);
-        }).catch(() => console.log('Oops errors!'))
-
-
-      });
+  getAllStudents(){
+    this.api.getStudents()
+    .subscribe((res: any)=>{
+      this.StudentsData =res;
+    })
   }
 
-  constructor( private modal: NzModalService) { }
+  constructor( private api :StudentsService) { }
 
   ngOnInit(): void {
+    this.getAllStudents()
   }
-
-  listOfData: Student[] = [
-    {
-      key: '1',
-      firstname: "Lionnel",
-      lastname: "T",
-      age: 21,
-      gender: "Male"
-    },
-    {
-      key: '2',
-      firstname: "Kate",
-      lastname: "D",
-      age: 21,
-      gender: "Female"
-    },
-    {
-      key: '3',
-      firstname: "Jane",
-      lastname: "Doe",
-      age: 20,
-      gender: "Female"
-    },
-    {
-      key : '4',
-      firstname: "John",
-      lastname: "Doe",
-      age: 20,
-      gender: "Male"
-    }
-  ];
-
-  delete = (index:any) => {
-    this.listOfData.splice(index, 1)
-    console.log(index);
-  }
-
 }
-
 
 

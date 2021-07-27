@@ -26,22 +26,29 @@
 
   <nz-modal
       [(nzVisible)]="isVisible2"
-      nzTitle="Modal Title"
+      nzTitle="Change Password"
       (nzOnCancel)="handleCancel2()"
       (nzOnOk)="handleOk2()"
       [nzOkLoading]="isOkLoading2"
     >
-      <p *nzModalContent>Modal Content</p>
+      <div *nzModalContent>
+
+
+
+
+
+      </div>
     </nz-modal>
 
 
 
 
-  <button nz-button nzType="primary" (click)="showModal()" class="addStudent">
-    <span>Add Student</span>
-  </button>
 
-<nz-table #basicTable class="studentsTable" [nzData]="listOfData">
+    <!-- Table & Button-->
+
+<app-addstudents></app-addstudents>
+
+<nz-table #basicTable class="studentsTable" >
   <thead>
     <tr>
       <th>First Name</th>
@@ -52,83 +59,24 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let data of basicTable.data">
+    <tr *ngFor="let data of StudentsData">
       <td>{{ data.firstname }}</td>
       <td>{{ data.lastname }}</td>
       <td>{{ data.age }}</td>
       <td>{{ data.gender }}</td>
       <td>
 
-        <button nz-button nzType="primary" class="viewStudent">
-          <span>View</span>
-        </button>
-        <nz-divider nzType="vertical"></nz-divider>
-
-        <button nz-button nzType="primary" class="editStudent">
-          <span>Edit</span>
-        </button>
+       <app-editstudents></app-editstudents>
 
         <nz-divider nzType="vertical"></nz-divider>
 
-        <button nz-button nzType="primary" class="editStudent" (click)="showDeleteConfirm()">
-          <span>Delete</span>
-        </button>
-
-      <!-- <button nz-button nzType="primary" (click)="showConfirm()">Confirm</button> -->
+        <app-deletestudents></app-deletestudents>
 
 
       </td>
     </tr>
   </tbody>
 </nz-table>
-
-
-<nz-modal
-  [(nzVisible)]="isVisible"
-  nzTitle="Add Student"
-  (nzOnCancel)="handleCancel()"
-  (nzOnOk)="handleOk()"
-  [nzOkLoading]="isOkLoading"
->
-  <div *nzModalContent>
-
-    <form nz-form>
-      <nz-form-item>
-        <nz-form-label [nzSpan]="5">Name</nz-form-label>
-        <nz-form-control nzHasFeedback [nzSpan]="12" nzErrorTip="Input is required">
-          <input nz-input [ngModel]="''" name="required" required />
-        </nz-form-control>
-      </nz-form-item>
-      <nz-form-item>
-        <nz-form-label [nzSpan]="5">Surname</nz-form-label>
-        <nz-form-control nzHasFeedback [nzSpan]="12" nzErrorTip="">
-          <input nz-input [ngModel]="''" name="maxlength" maxlength="6" />
-        </nz-form-control>
-      </nz-form-item>
-      <nz-form-item>
-        <nz-form-label [nzSpan]="5">Age</nz-form-label>
-        <nz-form-control nzHasFeedback [nzSpan]="12" nzErrorTip="MinLength is 6">
-          <input nz-input [ngModel]="''" name="minlength" minlength="6" />
-        </nz-form-control>
-      </nz-form-item>
-      <nz-form-item>
-        <nz-form-label [nzSpan]="5">Gender</nz-form-label>
-        <nz-form-control [nzSpan]="12"  nzHasFeedback>
-          <nz-select name="select-gender" [ngModel]="'Choose Gender'">
-            <nz-option nzValue="Option 1" nzLabel="Female"></nz-option>
-            <nz-option nzValue="Option 2" nzLabel="Male"></nz-option>
-          </nz-select>
-        </nz-form-control>
-      </nz-form-item>
-
-    </form>
-
-
-
-
-  </div>
-</nz-modal>
-
 
 
 </div>
