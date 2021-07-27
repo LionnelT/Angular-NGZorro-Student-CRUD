@@ -1,0 +1,49 @@
+<button nz-button nzType="primary" (click)="showModal()" class="addStudent">
+  <span>Add Student</span>
+</button>
+
+<nz-modal
+  [(nzVisible)]="isVisible"
+  nzTitle="Add Student"
+  (nzOnCancel)="handleCancel()"
+  (nzOnOk)="handleOk()"
+  [nzOkLoading]="isOkLoading"
+>
+  <div *nzModalContent>
+
+    <form nz-form>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5">Name</nz-form-label>
+        <nz-form-control nzHasFeedback [nzSpan]="12" nzErrorTip="Input is required">
+          <input nz-input [ngModel]="''" name="required" required />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5">Surname</nz-form-label>
+        <nz-form-control nzHasFeedback [nzSpan]="12" nzErrorTip="">
+          <input nz-input [ngModel]="''" name="maxlength" maxlength="6" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5">Age</nz-form-label>
+        <nz-form-control nzHasFeedback [nzSpan]="12" nzErrorTip="MinLength is 6">
+          <input nz-input [ngModel]="''" name="minlength" minlength="6" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5">Gender</nz-form-label>
+        <nz-form-control [nzSpan]="12"  nzHasFeedback>
+          <nz-select name="select-gender" [ngModel]="'Choose Gender'">
+            <nz-option nzValue="Option 1" nzLabel="Female"></nz-option>
+            <nz-option nzValue="Option 2" nzLabel="Male"></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+
+    </form>
+
+
+
+
+  </div>
+</nz-modal>
