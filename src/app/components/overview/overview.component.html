@@ -1,0 +1,135 @@
+<div class="conatiner">
+
+  <ul nz-menu nzMode="horizontal">
+    <li nz-menu-item nzSelected>
+      <i nz-icon nzType="home"></i>
+      Home
+    </li>
+    <li nz-submenu nzTitle="Settings" nzIcon="setting">
+      <ul>
+        <li nz-menu-group nzTitle="">
+          <ul>
+            <li nz-menu-item (click)="changePassword()">Change Password</li>
+          </ul>
+        </li>
+
+      </ul>
+    </li>
+    <li nz-menu-item>
+      <i nz-icon nzType="logout"></i>
+      Logout
+      <a href="#" ></a>
+    </li>
+  </ul>
+
+  <!-- Change Password Modal -->
+
+  <nz-modal
+      [(nzVisible)]="isVisible2"
+      nzTitle="Modal Title"
+      (nzOnCancel)="handleCancel2()"
+      (nzOnOk)="handleOk2()"
+      [nzOkLoading]="isOkLoading2"
+    >
+      <p *nzModalContent>Modal Content</p>
+    </nz-modal>
+
+
+
+
+  <button nz-button nzType="primary" (click)="showModal()" class="addStudent">
+    <span>Add Student</span>
+  </button>
+
+<nz-table #basicTable class="studentsTable" [nzData]="listOfData">
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Surname</th>
+      <th>Age</th>
+      <th>Gender</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of basicTable.data">
+      <td>{{ data.firstname }}</td>
+      <td>{{ data.lastname }}</td>
+      <td>{{ data.age }}</td>
+      <td>{{ data.gender }}</td>
+      <td>
+
+        <button nz-button nzType="primary" class="viewStudent">
+          <span>View</span>
+        </button>
+        <nz-divider nzType="vertical"></nz-divider>
+
+        <button nz-button nzType="primary" class="editStudent">
+          <span>Edit</span>
+        </button>
+
+        <nz-divider nzType="vertical"></nz-divider>
+
+        <button nz-button nzType="primary" class="editStudent" (click)="showDeleteConfirm()">
+          <span>Delete</span>
+        </button>
+
+      <!-- <button nz-button nzType="primary" (click)="showConfirm()">Confirm</button> -->
+
+
+      </td>
+    </tr>
+  </tbody>
+</nz-table>
+
+
+<nz-modal
+  [(nzVisible)]="isVisible"
+  nzTitle="Add Student"
+  (nzOnCancel)="handleCancel()"
+  (nzOnOk)="handleOk()"
+  [nzOkLoading]="isOkLoading"
+>
+  <div *nzModalContent>
+
+    <form nz-form>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5">Name</nz-form-label>
+        <nz-form-control nzHasFeedback [nzSpan]="12" nzErrorTip="Input is required">
+          <input nz-input [ngModel]="''" name="required" required />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5">Surname</nz-form-label>
+        <nz-form-control nzHasFeedback [nzSpan]="12" nzErrorTip="">
+          <input nz-input [ngModel]="''" name="maxlength" maxlength="6" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5">Age</nz-form-label>
+        <nz-form-control nzHasFeedback [nzSpan]="12" nzErrorTip="MinLength is 6">
+          <input nz-input [ngModel]="''" name="minlength" minlength="6" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5">Gender</nz-form-label>
+        <nz-form-control [nzSpan]="12"  nzHasFeedback>
+          <nz-select name="select-gender" [ngModel]="'Choose Gender'">
+            <nz-option nzValue="Option 1" nzLabel="Female"></nz-option>
+            <nz-option nzValue="Option 2" nzLabel="Male"></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+
+    </form>
+
+
+
+
+  </div>
+</nz-modal>
+
+
+
+</div>
+

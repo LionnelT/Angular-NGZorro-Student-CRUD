@@ -1,0 +1,52 @@
+.container{
+  margin: 50px;
+  padding: 50px;
+}
+
+.studentsTable{
+  margin-left: 15%;
+  margin-right: 15%;
+  margin-top: 2%;
+}
+
+.addStudent{
+  margin-left: 15%;
+  margin-top: 10%;
+  background-color: #024351;
+  border-radius: 5px;
+}
+
+[nz-form] {
+  max-width: 600px;
+
+}
+
+logo {
+  width: 120px;
+  height: 31px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 16px 24px 16px 0;
+  float: left;
+}
+
+[nz-menu] {
+  line-height: 64px;
+}
+
+[nz-menu]{
+  background-color: #024351;
+  color: #fff;
+}
+
+.editStudent{
+  background-color: #024351;
+  border-radius: 5px;
+}
+.viewStudent{
+  background-color: #024351;
+  border-radius: 5px;
+}
+.deleteStudent{
+  background-color: #024351;
+  border-radius: 5px;
+}
