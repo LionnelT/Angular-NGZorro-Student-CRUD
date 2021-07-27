@@ -20,6 +20,10 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { LoginComponent } from './components/login/login.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component'
 import { SignupComponent} from './components/signup/signup.component';
+import { ResetpasswordComponent } from './components/resetpassword/resetpassword.component';
+import { AddstudentsComponent } from './components/addstudents/addstudents.component';
+import {DeletestudentsComponent} from './components/deletestudents/deletestudents.component';
+import { EditstudentsComponent } from './components/editstudents/editstudents.component';
 
 registerLocaleData(en);
 
@@ -30,7 +34,11 @@ registerLocaleData(en);
     LoginComponent,
     PagenotfoundComponent,
     routingComponents,
-    SignupComponent
+    SignupComponent,
+    ResetpasswordComponent,
+    AddstudentsComponent,
+    DeletestudentsComponent,
+    EditstudentsComponent
   ],
   imports: [
     BrowserModule,
